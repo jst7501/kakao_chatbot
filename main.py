@@ -7,7 +7,7 @@ api = Api(app)  # Flask 객체에 Api 객체 등록
 
 @api.route('/hello')  # 데코레이터 이용, '/hello' 경로에 클래스 등록
 class HelloWorld(Resource):
-    def get(self):  # GET 요청시 리턴 값에 해당 하는 dict를 JSON 형태로 반환
+    def post(self):  # GET 요청시 리턴 값에 해당 하는 dict를 JSON 형태로 반환
         return {"hello": "world!"}
 
 
