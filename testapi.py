@@ -45,7 +45,7 @@ for i in rankId:
             assists.append(part[j]['assists'])
             championName.append(part[j]['championName'])
             # 승리, 킬뎃값 넣어주기
-print(assists)
+
 
 games = len(win)
 df = pd.DataFrame(win)
@@ -66,6 +66,59 @@ for i in range(0, games):
     print('챔피언 이미지', 'http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/' +
           df['championName'][i]+'.png')
     if df['KDA'][i] < 3:
-        print('해당 게임에서 ' + username + ' 님의 ' + ' 실력은' + ' [ 재앙 ] 입니다!')
+        az = print('해당 게임에서 ' + username + ' 님의 ' + ' 실력은' + ' [ 재앙 ] 입니다!')
     else:
-        print('쫌 침. ')
+        az = print('쫌 침. ')
+
+if df["win"] == 'true':
+    aaaa = '승리'
+else:
+    aaaa = '패배'
+
+a = {"version": "2.0",
+     "template": {
+         "outputs": [
+             {
+                 "simpleText": {
+                     "text": username + '님의 최근' + '경기 ' + '의 퍼포먼스는?'
+                 }
+             },
+             {
+                 "carousel": {
+                     "type": "itemCard",
+                     "items": [
+                         {
+                             "imageTitle": {
+                                 "title": df["championName"][0],
+                                 "imageUrl": 'http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/' +
+                                 df['championName'][i]+'.png'
+                             },
+                             "itemList": [
+                                 {
+                                     "title": "KDA",
+                                     "description": str(round(df['KDA'][0], 1))
+                                 },
+                                 {
+                                     "title": aaaa,
+                                     "description": az
+                                 },
+
+                             ],
+                             "itemListAlignment": "left",
+
+
+                         },
+
+                     ]
+                 }
+             }
+         ],
+         #  "quickReplies": [
+
+         #      {
+         #          "messageText": "장바구니",
+         #          "action": "message",
+         #          "label": "장바구니"
+         #      }
+         #  ]
+     }}
