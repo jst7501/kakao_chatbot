@@ -11,7 +11,7 @@ class HelloWorld(Resource):
     def post(self):  # GET 요청시 리턴 값에 해당 하는 dict를 JSON 형태로 반환
         a = json.dumps({"data": {"world": "안녕하세요"}})
 
-        return
+        return a
 
 
 if __name__ == "__main__":
